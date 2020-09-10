@@ -86,6 +86,7 @@ menuBtn.addEventListener('click', () => {
         navBar.classList.remove('active');
     }
 
+})
 
 const scroll = new SmoothScroll('.nav ul li a[href*="#"]', {
     speed: 400,
