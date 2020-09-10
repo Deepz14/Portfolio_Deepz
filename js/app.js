@@ -67,10 +67,28 @@ function init(){
     new TypeWriter(txtElement, words, wait)
 }
 
-gsap.fromTo(".projects-section", { x : -550 }, { x: 0, duration: 3.5, ease: "power3.out", repeat: 2, repeatDelay: 1 });
+const menuBtn = document.querySelector('.menuBtn');
 
+const navBar = document.querySelector('.nav');
 
-const scroll = new SmoothScroll('.navbar-nav a[href*="#"]', {
+// const showNav = new TimelineMax({ paused: true });
+
+// const hideNav = new TimelineMax({ paused: true });
+
+menuBtn.addEventListener('click', () => {
+    
+    if (navBar.classList.contains('active') !== true) {
+        gsap.fromTo(".nav", { x: -350, opacity: 0 }, { x: 0, opacity: 1, duration: 2.5, ease: "back.out", repeat: 0, repeatDelay: 1 });
+        navBar.classList.add('active');
+    }
+    else if (navBar.classList.contains('active')) {
+        gsap.fromTo(".nav", { x: 0, opacity: 1 }, { x: -350, opacity: 0, duration: 2.5, ease: "back.out", repeat: 0, repeatDelay: 1 });
+        navBar.classList.remove('active');
+    }
+
+})
+
+const scroll = new SmoothScroll('.nav ul li a[href*="#"]', {
     speed: 400,
     easing: 'easeInOutCubic' 
 })
